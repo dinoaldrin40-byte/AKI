@@ -1,0 +1,894 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Akii ❤️</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Poppins:wght@300;400;500;600&display=swap');
+
+:root {
+  --red: #a41632;
+  --bright: #ff4969;
+  --cream: #ffe5e9;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  background: radial-gradient(ellipse at 50% 40%,
+    #48101e 0%, #200812 45%, #090407 100%);
+  color: var(--cream);
+  font-family: 'Poppins', sans-serif;
+  overflow-x: hidden;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+}
+
+#particles {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.heart, .petal {
+  position: absolute;
+  bottom: -50px;
+  animation: floatUp linear forwards;
+  opacity: 0;
+}
+
+.heart {
+  color: #ff526e;
+  text-shadow: 0 0 15px #ff3159;
+}
+
+.petal {
+  color: #d62d4b;
+  text-shadow: 0 0 10px #ff536b;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+  15% { opacity: .8; }
+  100% {
+    transform: translateY(-115vh) rotate(600deg);
+    opacity: 0;
+  }
+}
+
+.screen {
+  min-height: 100vh;
+  display: none;
+  position: relative;
+  z-index: 2;
+  padding: 35px 20px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  animation: appear .9s ease;
+}
+
+.screen.active {
+  display: flex;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.eyebrow {
+  color: #ff8ca0;
+  font-size: 11px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+h1, h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400;
+}
+
+h1 {
+  font-size: clamp(42px, 9vw, 76px);
+  line-height: 1.05;
+  margin-bottom: 20px;
+}
+
+h1 span {
+  color: #ff7189;
+  font-style: italic;
+  text-shadow: 0 0 30px #b51c40;
+}
+
+.subtitle {
+  color: #d8aeb8;
+  font-size: 13px;
+  line-height: 2;
+  max-width: 450px;
+  margin: 0 auto 35px;
+  white-space: pre-line;
+}
+
+.glow-heart {
+  font-size: 65px;
+  margin-bottom: 25px;
+  filter: drop-shadow(0 0 20px #ff3159);
+  animation: heartbeat 1.7s infinite;
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  15% { transform: scale(1.16); }
+  30% { transform: scale(1); }
+  45% { transform: scale(1.12); }
+}
+
+.primary-btn {
+  background: linear-gradient(135deg, #ff637c, #a41632);
+  color: white;
+  padding: 15px 30px;
+  border-radius: 50px;
+  font-size: 12px;
+  letter-spacing: 1px;
+  box-shadow: 0 0 25px #a4163255;
+  transition: .3s;
+}
+
+.primary-btn:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 35px #ff4969a0;
+}
+
+.primary-btn:disabled {
+  opacity: .65;
+  cursor: wait;
+  transform: none;
+}
+
+.secondary-btn {
+  background: transparent;
+  color: #ff9bab;
+  border: 1px solid #9f354d;
+  padding: 13px 25px;
+  border-radius: 40px;
+  margin: 8px;
+  font-size: 11px;
+  transition: .3s;
+}
+
+.secondary-btn:hover {
+  background: #71152b;
+}
+
+.music-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 99999;
+  pointer-events: auto;
+  border: 1px solid #9f354d;
+  border-radius: 30px;
+  background: #260a14dd;
+  color: #ffb5c2;
+  padding: 10px 15px;
+  font-size: 11px;
+}
+
+.envelope {
+  width: 190px;
+  height: 130px;
+  background: #9f1d39;
+  margin: 35px auto;
+  position: relative;
+  border-radius: 5px;
+  box-shadow: 0 0 40px #ff315955;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: heartbeat 2s infinite;
+}
+
+.envelope:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-left: 95px solid transparent;
+  border-right: 95px solid transparent;
+  border-top: 75px solid #d83b59;
+  transform-origin: top;
+  transition: transform .8s;
+  z-index: 2;
+}
+
+.envelope.open:before {
+  transform: rotateX(180deg);
+}
+
+.envelope:after {
+  content: "♥";
+  font-size: 45px;
+  color: #ffe4e8;
+}
+
+.letter-card {
+  width: min(100%, 650px);
+  padding: 35px 28px;
+  background: linear-gradient(145deg, #35101cdd, #1b0911ee);
+  border: 1px solid #8c3048;
+  border-radius: 22px;
+  box-shadow: 0 15px 65px #0008, 0 0 35px #b31f4030;
+  backdrop-filter: blur(12px);
+}
+
+.letter-card h2 {
+  font-size: 38px;
+  color: #ff879d;
+  margin-bottom: 18px;
+}
+
+.letter-card p {
+  font-size: 13px;
+  line-height: 2.1;
+  color: #efd0d7;
+  text-align: left;
+  white-space: pre-line;
+}
+
+.signature {
+  color: #ff8da1;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 27px;
+  margin-top: 20px;
+  text-align: right;
+}
+
+.divider {
+  width: 80px;
+  height: 1px;
+  background: #d74b68;
+  margin: 20px auto;
+}
+
+.typing {
+  min-height: 150px;
+}
+
+.secret-box {
+  display: none;
+  margin-top: 25px;
+  animation: appear 1s ease;
+}
+
+.secret-box.show {
+  display: block;
+}
+
+.secret-box p {
+  text-align: center;
+}
+
+.big-rose {
+  font-size: 70px;
+  filter: drop-shadow(0 0 20px #f43d5f);
+  margin-bottom: 20px;
+  animation: heartbeat 2s infinite;
+}
+
+.footer {
+  color: #9d6a76;
+  font-size: 10px;
+  letter-spacing: 2px;
+  margin-top: 30px;
+}
+
+.name-gate {
+  width: min(100%, 360px);
+  margin: 0 auto 18px;
+}
+
+.name-gate label {
+  display: block;
+  color: #ffb5c2;
+  font-size: 10px;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.name-gate input {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid #9f354d;
+  border-radius: 30px;
+  outline: none;
+  background: #260a14dd;
+  color: #ffe5e9;
+  font: inherit;
+  font-size: 13px;
+  text-align: center;
+}
+
+.name-gate input:focus {
+  border-color: #ff7189;
+  box-shadow: 0 0 18px #ff496955;
+}
+
+.name-error {
+  display: none;
+  color: #ff8ca0;
+  font-size: 11px;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.name-error.show {
+  display: block;
+}
+
+@media(max-width:480px) {
+  .letter-card { padding: 25px 20px; }
+  .letter-card p { font-size: 12px; }
+  .letter-card h2 { font-size: 32px; }
+  .music-btn { top: 10px; right: 10px; }
+}
+</style>
+</head>
+
+<body>
+
+<div id="particles"></div>
+
+<!-- LOCAL MP3 MUSIC -->
+<audio id="backgroundMusic" loop preload="auto">
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<button type="button" class="music-btn" id="musicBtn"
+  aria-label="Play background music" aria-pressed="false">
+  ♫ Music: OFF
+</button>
+
+<!-- SCREEN 1 -->
+<section class="screen active" id="screen1">
+
+  <div class="glow-heart">❤️</div>
+
+  <p class="eyebrow">A little something for you</p>
+
+  <h1>Hey, <span>Akii</span>...</h1>
+
+  <p class="subtitle">
+    I made something special for you.
+    There are some things I want you to know,
+    and I hope you'll take a little time to read them.
+  </p>
+
+  <div class="name-gate">
+    <label for="nameInput">ENTER YOUR FIRST NAME TO PROCEED</label>
+
+    <input
+      type="text"
+      id="nameInput"
+      placeholder="Enter your first name"
+      autocomplete="off"
+      aria-describedby="nameError"
+      onkeydown="if(event.key === 'Enter') validateName()"
+    >
+
+    <p class="name-error" id="nameError">
+      The name is not valid. Please use your first name.
+    </p>
+  </div>
+
+  <button type="button" class="primary-btn"
+    id="proceedBtn" onclick="validateName()">
+    PROCEED ♥
+  </button>
+
+  <div class="footer">MADE WITH LOVE · JUST FOR YOU</div>
+
+</section>
+
+<!-- SCREEN 2 -->
+<section class="screen" id="screen2">
+
+  <p class="eyebrow">A message from my heart</p>
+
+  <h1>A letter for <span>you</span></h1>
+
+  <div class="envelope" id="envelope"></div>
+
+  <p class="subtitle">
+    There's something inside this letter
+    that I've been wanting to tell you.
+  </p>
+
+  <button class="primary-btn" onclick="openLetter()">
+    UNSEAL MY LETTER 💌
+  </button>
+
+</section>
+
+<!-- SCREEN 3 -->
+<section class="screen" id="screen3">
+
+  <p class="eyebrow">From the bottom of my heart</p>
+
+  <div class="letter-card">
+
+    <h2>I'm Sorry, Akii.</h2>
+
+    <div class="divider"></div>
+
+    <p class="typing" id="typingText"></p>
+
+    <div class="signature">With all my love, ❤️</div>
+
+  </div>
+
+  <br>
+
+  <button class="primary-btn" onclick="goTo(4)">
+    THERE'S MORE I WANT TO SAY →
+  </button>
+
+</section>
+
+<!-- SCREEN 4 -->
+<section class="screen" id="screen4">
+
+  <div class="big-rose">🌹</div>
+
+  <p class="eyebrow">One more thing...</p>
+
+  <h1>A little <span>secret</span></h1>
+
+  <p class="subtitle">
+    I have one more message hidden here.
+    It's something I want you to read.
+  </p>
+
+  <button class="primary-btn" onclick="revealSecret()">
+    REVEAL MY SECRET ❤️
+  </button>
+
+  <div class="secret-box" id="secretBox">
+
+    <div class="letter-card">
+
+      <h2>My Promise to You</h2>
+
+      <div class="divider"></div>
+
+      <p>
+Akii, I know that I cannot change the past,
+and I cannot erase the pain I've caused you.
+
+But I want to do better, not just by saying it,
+but by showing it through my actions.
+
+I want to give you the love, reassurance,
+consistency, and comfort you've always deserved.
+
+I don't want you to keep asking for the things
+that should come naturally from someone who loves you.
+
+I want to make you feel important, appreciated,
+and loved even when we're miles apart.
+
+I'm not asking you to forget everything overnight.
+I just hope you'll see that I'm genuinely willing
+to work on myself and become a better partner.
+
+You mean so much to me, Akii.
+And I'm truly sorry for everything.
+      </p>
+
+      <div class="signature">
+        I love you, always. ❤️
+      </div>
+
+    </div>
+
+  </div>
+
+  <br>
+
+  <button class="secondary-btn" onclick="goTo(5)">
+    ONE LAST SURPRISE →
+  </button>
+
+</section>
+
+<!-- SCREEN 5 -->
+<section class="screen" id="screen5">
+
+  <div class="glow-heart">❤️</div>
+
+  <p class="eyebrow">Before you go...</p>
+
+  <h1>You mean <span>so much</span> to me.</h1>
+
+  <p class="subtitle">
+    No matter how difficult things have become,
+    I want you to know that my feelings are genuine.
+
+    Thank you for taking the time to read my message.
+
+    I love you, Akii. Mwaaaaaps! 😘
+  </p>
+
+  <div class="big-rose">🌹</div>
+
+  <button class="primary-btn" onclick="makeHearts()">
+    SEND YOU A MILLION HEARTS ❤️
+  </button>
+
+  <br>
+
+  <button class="secondary-btn" onclick="goTo(1)">
+    ↻ READ AGAIN
+  </button>
+
+  <div class="footer">FOREVER GRATEFUL FOR YOU</div>
+
+</section>
+
+<!-- EMAILJS SDK -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<script>
+
+// ===================================
+// EMAILJS CONFIGURATION
+// ===================================
+
+const EMAILJS_PUBLIC_KEY = 'Z8PftRXcD-91zCMRJ';
+const EMAILJS_SERVICE_ID = 'service_nkstbhk';
+const EMAILJS_TEMPLATE_ID = 'template_jspud79';
+
+emailjs.init({
+  publicKey: EMAILJS_PUBLIC_KEY
+});
+
+// ===================================
+// NAME CHECK + EMAIL NOTIFICATION
+// ===================================
+
+let notificationSent = false;
+let isSubmitting = false;
+
+async function validateName() {
+
+  const input = document.getElementById('nameInput');
+  const error = document.getElementById('nameError');
+  const proceedBtn = document.getElementById('proceedBtn');
+
+  const enteredName = input.value.trim();
+  const normalizedName = enteredName.toLowerCase()
+    .replace(/[^a-z]/g, '');
+
+  const acceptedNames = [
+    'krisha',
+    'aldrin',
+    'aldrindino',
+    'aldrinqdino'
+  ];
+
+  if (!acceptedNames.includes(normalizedName)) {
+    error.textContent =
+      'The name is not valid. Please use your first name.';
+    error.classList.add('show');
+    input.focus();
+    return;
+  }
+
+  if (isSubmitting) return;
+
+  error.classList.remove('show');
+
+  proceedBtn.disabled = true;
+  isSubmitting = true;
+  proceedBtn.textContent = 'PLEASE WAIT... ❤️';
+
+  // Prevent sending duplicate notifications during this visit.
+  if (!notificationSent) {
+
+    try {
+
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        {
+          name: enteredName,
+          time: new Date().toLocaleString(),
+          message: 'Someone opened the For Akii love letter website.'
+        }
+      );
+
+      notificationSent = true;
+      console.log('Email notification sent successfully!');
+
+    } catch (err) {
+
+      console.error('EmailJS error:', err);
+
+      error.textContent =
+        'Email notification failed, but you can still continue.';
+
+      error.classList.add('show');
+    }
+  }
+
+  proceedBtn.textContent = 'PROCEED ♥';
+  proceedBtn.disabled = false;
+  isSubmitting = false;
+
+  goTo(2);
+}
+
+// ===================================
+// SCREEN NAVIGATION
+// ===================================
+
+function goTo(number) {
+
+  document.querySelectorAll('.screen').forEach(screen => {
+    screen.classList.remove('active');
+  });
+
+  document.getElementById('screen' + number)
+    .classList.add('active');
+
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+
+  if (number === 3) {
+    startTyping();
+  }
+}
+
+// ===================================
+// ENVELOPE ANIMATION
+// ===================================
+
+function openLetter() {
+
+  const envelope = document.getElementById('envelope');
+
+  envelope.classList.add('open');
+
+  setTimeout(() => {
+    goTo(3);
+  }, 1000);
+}
+
+// ===================================
+// TYPING ANIMATION
+// ===================================
+
+const message = `I know I've made mistakes, and I know that I've hurt you in ways I never should have.
+
+I'm sorry for all the times I failed to make you feel loved, appreciated, and important.
+
+You shouldn't have to keep asking me for reassurance, attention, and effort. I should have given those things to you willingly.
+
+I know that my words alone cannot fix everything, and I understand why you're tired of hearing the same promises.
+
+I don't expect everything to become okay immediately. I just want the chance to show you through my actions that I am willing to change.
+
+I'm truly sorry, Akii. You deserve so much better, and I want to become someone who can give you the love you deserve. ❤️`;
+
+let typingStarted = false;
+
+function startTyping() {
+
+  if (typingStarted) return;
+
+  typingStarted = true;
+
+  const target = document.getElementById('typingText');
+
+  let index = 0;
+
+  function type() {
+
+    if (index < message.length) {
+
+      target.textContent += message.charAt(index);
+
+      index++;
+
+      setTimeout(type, 27);
+    }
+  }
+
+  type();
+}
+
+// ===================================
+// SECRET REVEAL
+// ===================================
+
+function revealSecret() {
+
+  const secret = document.getElementById('secretBox');
+
+  secret.classList.add('show');
+
+  secret.scrollIntoView({
+    behavior: 'smooth',
+    block: 'center'
+  });
+
+  makeHearts();
+}
+
+// ===================================
+// FLOATING HEARTS AND ROSE PETALS
+// ===================================
+
+const particleArea = document.getElementById('particles');
+
+function createParticle(type) {
+
+  const particle = document.createElement('div');
+
+  particle.className = type;
+
+  if (type === 'heart') {
+    particle.textContent =
+      Math.random() > .5 ? '♥' : '❤';
+  } else {
+    particle.textContent = '🌹';
+  }
+
+  particle.style.left = Math.random() * 100 + 'vw';
+
+  particle.style.fontSize =
+    (12 + Math.random() * 20) + 'px';
+
+  const duration = 5 + Math.random() * 7;
+
+  particle.style.animationDuration = duration + 's';
+
+  particleArea.appendChild(particle);
+
+  setTimeout(() => particle.remove(), duration * 1000);
+}
+
+setInterval(() => {
+
+  createParticle('heart');
+
+  if (Math.random() > .5) {
+    createParticle('petal');
+  }
+
+}, 650);
+
+// ===================================
+// MILLION HEARTS SURPRISE
+// ===================================
+
+function makeHearts() {
+
+  for (let i = 0; i < 35; i++) {
+
+    setTimeout(() => {
+      createParticle('heart');
+    }, i * 60);
+
+  }
+}
+
+// ===================================
+// LOCAL MP3 BACKGROUND MUSIC
+// ===================================
+
+const backgroundMusic =
+  document.getElementById('backgroundMusic');
+
+const musicButton =
+  document.getElementById('musicBtn');
+
+function updateMusicButton(isPlaying) {
+
+  musicButton.textContent =
+    isPlaying ? '♫ Music: ON' : '♫ Music: OFF';
+
+  musicButton.setAttribute(
+    'aria-pressed',
+    String(isPlaying)
+  );
+
+  musicButton.setAttribute(
+    'aria-label',
+    isPlaying ? 'Pause background music' : 'Play background music'
+  );
+}
+
+musicButton.addEventListener('click', async function () {
+
+  if (!backgroundMusic) {
+    alert('Audio player not found. Please check your HTML file.');
+    return;
+  }
+
+  if (backgroundMusic.paused) {
+
+    try {
+
+      await backgroundMusic.play();
+      updateMusicButton(true);
+
+    } catch (error) {
+
+      console.error('Music playback error:', error);
+
+      updateMusicButton(false);
+
+      alert(
+        'Hindi mapatugtog ang music. Siguraduhing ang MP3 file ay pangalan na music.mp3 at nasa parehong folder ng index.html.'
+      );
+    }
+
+  } else {
+
+    backgroundMusic.pause();
+    updateMusicButton(false);
+
+  }
+});
+
+backgroundMusic.addEventListener(
+  'play',
+  () => updateMusicButton(true)
+);
+
+backgroundMusic.addEventListener(
+  'pause',
+  () => updateMusicButton(false)
+);
+
+backgroundMusic.addEventListener(
+  'ended',
+  () => updateMusicButton(false)
+);
+
+updateMusicButton(false);
+
+</script>
+
+</body>
+</html>
